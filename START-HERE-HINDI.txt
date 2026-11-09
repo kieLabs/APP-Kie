@@ -17,3 +17,14 @@ IMPORTANT:
 
 
 IMPORTANT: GitHub par upload karne wali ZIP mein Blogger XML theme shamil nahi hai. Blogger ke Theme > Restore/Upload mein alag se download ki hui APK-KIE-Blogger-Theme.xml file upload karein.
+
+
+GITHUB PAGES FRONTEND (IMPORTANT)
+1. frontend folder mein index.html, style.css, script.js aur assets upload hone chahiye.
+2. GitHub repository → Settings → Pages → Build and deployment → Source mein GitHub Actions select karein.
+3. Main branch par push karne ke baad deploy-frontend workflow automatic chalega.
+4. Website kholkar API settings mein apne VPS backend ka HTTPS URL save karein aur Test connection dabayein.
+5. Backend VPS par deploy hone aur Android SDK/Java/Gradle/signing setup complete hone ke baad hi real APK/AAB banega. GitHub Pages akela APK compile nahi karta.
+
+GitHub Pages frontend URL ka format: https://USERNAME.github.io/REPOSITORY/
+Backend ALLOWED_ORIGINS mein https://kielabs.github.io add karein (repository path nahi); Blogger use karne par uska origin bhi comma se add karein.
