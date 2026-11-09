@@ -1,0 +1,19 @@
+APK KIE — GitHub Upload Guide (Hindi)
+
+1. ZIP file ko extract karein. Andar APK-KIE folder kholein.
+2. GitHub par New repository banayein: APK-KIE. Public ya Private aapki choice.
+3. Extract kiye hue folder ke ANDAR ki sari files/folders upload karein. ZIP file ko repository me sirf ek file ki tarah upload mat karein.
+4. Repository ka default branch main rakhein.
+5. .github/workflows/backend-tests.yml automatically backend tests chalata hai.
+6. Blogger me theme lagane ke liye blogger/apk-kie-theme.xml ko Blogger → Theme → Restore → Upload se import karein.
+7. Backend ko GitHub Pages par nahi chalaya ja sakta. Backend ke liye Android SDK/Gradle support wala Linux VPS ya compatible build server chahiye.
+8. VPS par backend/.env.example ki copy backend/.env banayein, secrets aur ALLOWED_ORIGINS set karein; phir project root me docker compose up -d --build chalayein.
+9. Blogger XML me API_BASE ko apne HTTPS backend URL se replace karein.
+
+IMPORTANT:
+- backend/.env, signing keys, APK/AAB outputs ko GitHub par kabhi upload na karein.
+- Pehle private testing karein. Public launch se pehle authentication, rate limiting, abuse protection aur HTTPS zaroor lagayein.
+- AAB Play Console upload ke liye hota hai; phone par direct install ke liye APK chahiye.
+
+
+IMPORTANT: GitHub par upload karne wali ZIP mein Blogger XML theme shamil nahi hai. Blogger ke Theme > Restore/Upload mein alag se download ki hui APK-KIE-Blogger-Theme.xml file upload karein.

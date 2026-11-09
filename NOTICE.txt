@@ -1,0 +1,1 @@
+APK KIE starter code is provided as a project starter. Review security, Android compatibility, legal rights and platform policies before public deployment. Android and Blogger are trademarks of their respective owners; this project is not affiliated with Google.
