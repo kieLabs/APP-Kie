@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10231f">
+  <meta name="description" content="APK KIE — turn your website into an Android APK or AAB. Configure your app and track builds in one place.">
+  <title>APK KIE — Website to Android App Builder</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home" aria-label="APK KIE home">
+        <span class="brand-mark">K</span><span>APK <b>KIE</b><small>APP BUILDER</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#home" data-view="home"><span class="nav-icon">▦</span> Overview</a>
+        <a class="nav-link" href="#builder" data-view="builder"><span class="nav-icon">＋</span> Create app</a>
+        <a class="nav-link" href="#builds" data-view="builds"><span class="nav-icon">◷</span> Build history</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="server-card"><span class="server-dot" id="serverDot"></span><div><b id="serverLabel">Backend not connected</b><small id="serverHint">Add your API server URL</small></div></div>
+        <button class="sidebar-setting" id="openApiSettings">⚙ API settings</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <b id="crumbTitle">Overview</b></div>
+        <div class="top-actions"><span class="secure-label">● Secure workspace</span><span class="avatar">K</span></div>
+      </header>
+
+      <section class="view active" id="view-home">
+        <div class="welcome-row"><div><div class="eyebrow">WEBSITE TO ANDROID</div><h1>Build your app.<br><span>Keep it simple.</span></h1><p class="lead">Convert your website into an Android app package. Configure, build and download from one workspace.</p></div><div class="hero-art" aria-hidden="true"><div class="phone-frame"><div class="phone-screen"><div class="phone-top"></div><div class="phone-line wide"></div><div class="phone-line"></div><div class="phone-tile"></div><div class="phone-line wide"></div><div class="phone-line short"></div></div></div><span class="art-orbit orbit-one"></span><span class="art-orbit orbit-two"></span></div></div>
+        <div class="stats-grid"><article class="stat-card"><span class="stat-icon mint">↗</span><div><small>Build service</small><strong id="statService">Not connected</strong><em>API connection status</em></div></article><article class="stat-card"><span class="stat-icon blue">▣</span><div><small>Build formats</small><strong>APK · AAB</strong><em>Android packages</em></div></article><article class="stat-card"><span class="stat-icon amber">◷</span><div><small>Recent builds</small><strong id="statBuilds">—</strong><em>From this workspace</em></div></article></div>
+        <div class="section-heading"><div><h2>Start a new build</h2><p>Choose a setup that matches your needs.</p></div></div>
+        <div class="mode-grid">
+          <article class="mode-card"><div class="mode-top"><span class="mode-icon">⚡</span><span class="tag">FAST SETUP</span></div><h3>Quick Builder</h3><p>Enter your website and app name. Start with sensible defaults.</p><ul><li>Website URL</li><li>App name and icon</li><li>APK output</li></ul><button class="btn btn-primary full" data-open-builder="quick">Start quick build <span>→</span></button></article>
+          <article class="mode-card featured"><div class="mode-top"><span class="mode-icon">⚙</span><span class="tag tag-green">MORE CONTROL</span></div><h3>Advanced Builder</h3><p>Set package details, colors, orientation and WebView permissions.</p><ul><li>Package and version details</li><li>APK or AAB output</li><li>WebView and device options</li></ul><button class="btn btn-dark full" data-open-builder="advanced">Open advanced builder <span>→</span></button></article>
+        </div>
+        <div class="notice"><span class="notice-icon">ⓘ</span><div><b>Build server setup required</b><p>The dashboard can be hosted on GitHub Pages. Actual APK/AAB generation requires your FastAPI backend and Android build server to be deployed and connected.</p></div></div>
+      </section>
+
+      <section class="view" id="view-builder">
+        <div class="page-heading"><div><div class="eyebrow">APP CONFIGURATION</div><h1>Create your Android app</h1><p>Provide a secure HTTPS website URL and configure your app package.</p></div><span class="step-badge">STEP 1 OF 2</span></div>
+        <form id="buildForm" class="builder-layout">
+          <div class="form-column">
+            <section class="panel"><div class="panel-heading"><span class="panel-number">01</span><div><h2>App details</h2><p>Basic information shown on the Android device.</p></div></div>
+              <div class="field"><label for="siteUrl">Website URL <i>Required</i></label><input id="siteUrl" name="site_url" type="url" placeholder="https://www.example.com" required inputmode="url"><small>Use a valid HTTPS address. HTTP websites are not accepted.</small></div>
+              <div class="two-fields"><div class="field"><label for="appName">App name <i>Required</i></label><input id="appName" name="app_name" maxlength="30" placeholder="My Website" required></div><div class="field"><label for="buildType">Output format</label><select id="buildType" name="build_type"><option value="apk">APK — Android install file</option><option value="aab">AAB — Play Store bundle</option></select></div></div>
+              <div class="field"><label for="appIcon">App icon <span>Optional · PNG/JPG/WEBP · max 2 MB</span></label><div class="upload-box"><input id="appIcon" name="icon" type="file" accept="image/png,image/jpeg,image/webp"><span class="upload-symbol">↑</span><div><b id="iconFileName">Choose an app icon</b><small>Square image recommended</small></div><span class="upload-action">Browse</span></div></div>
+            </section>
+            <section class="panel advanced-panel" id="advancedPanel"><div class="panel-heading"><span class="panel-number">02</span><div><h2>App configuration</h2><p>Advanced options for your Android WebView app.</p></div></div>
+              <div class="two-fields"><div class="field"><label for="packageName">Package name</label><input id="packageName" name="package_name" placeholder="com.example.myapp"><small>Lowercase, dot-separated.</small></div><div class="field"><label for="versionName">Version name</label><input id="versionName" name="version_name" value="1.0.0" maxlength="20"></div></div>
+              <div class="two-fields"><div class="field"><label for="versionCode">Version code</label><input id="versionCode" name="version_code" type="number" min="1" value="1"></div><div class="field"><label for="orientation">Screen orientation</label><select id="orientation" name="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option><option value="unspecified">Auto rotate</option></select></div></div>
+              <div class="color-grid"><div class="field"><label for="splashColor">Splash screen</label><div class="color-input"><input id="splashColor" name="splash_color" type="color" value="#3157d5"><code>#3157D5</code></div></div><div class="field"><label for="statusColor">Status bar</label><div class="color-input"><input id="statusColor" name="status_bar_color" type="color" value="#2445b0"><code>#2445B0</code></div></div><div class="field"><label for="navColor">Navigation bar</label><div class="color-input"><input id="navColor" name="navigation_bar_color" type="color" value="#10182b"><code>#10182B</code></div></div></div>
+              <div class="toggle-grid">
+                <label class="toggle-row"><span><b>JavaScript</b><small>Allow interactive website features</small></span><input type="checkbox" name="javascript_enabled" checked><i></i></label>
+                <label class="toggle-row"><span><b>DOM storage</b><small>Allow website local storage</small></span><input type="checkbox" name="dom_storage_enabled" checked><i></i></label>
+                <label class="toggle-row"><span><b>File uploads</b><small>Allow selecting files in website</small></span><input type="checkbox" name="file_upload_enabled" checked><i></i></label>
+                <label class="toggle-row"><span><b>Camera access</b><small>Allow camera when requested</small></span><input type="checkbox" name="camera_enabled"><i></i></label>
+                <label class="toggle-row"><span><b>Microphone access</b><small>Allow microphone when requested</small></span><input type="checkbox" name="microphone_enabled"><i></i></label>
+                <label class="toggle-row"><span><b>Fullscreen</b><small>Allow fullscreen web content</small></span><input type="checkbox" name="fullscreen_enabled"><i></i></label>
+                <label class="toggle-row"><span><b>Keep screen on</b><small>Prevent screen from sleeping</small></span><input type="checkbox" name="keep_screen_on"><i></i></label>
+                <label class="toggle-row"><span><b>External links</b><small>Open external links outside app</small></span><input type="checkbox" name="allow_external_links" checked><i></i></label>
+              </div>
+            </section>
+          </div>
+          <aside class="summary-column"><div class="summary-card"><div class="summary-title">BUILD SUMMARY <span>LIVE</span></div><div class="app-preview"><div class="preview-icon" id="previewIcon">K</div><b id="previewName">Your App</b><small id="previewUrl">your-website.com</small></div><div class="summary-line"><span>Build type</span><b id="summaryType">APK</b></div><div class="summary-line"><span>Orientation</span><b id="summaryOrientation">Portrait</b></div><div class="summary-line"><span>Mode</span><b id="summaryMode">Quick</b></div><div class="summary-divider"></div><div class="summary-note"><span>ⓘ</span> Your app will load the website inside an Android WebView. Website ownership and permission to package it are your responsibility.</div><button class="btn btn-primary full submit-btn" type="submit" id="submitBuild">Generate Android app <span>→</span></button><p class="form-footnote">By building, you confirm you have rights to use this website and its content.</p></div><button type="button" class="back-link" data-view-link="home">← Back to overview</button></aside>
+        </form>
+      </section>
+
+      <section class="view" id="view-builds"><div class="page-heading"><div><div class="eyebrow">YOUR WORKSPACE</div><h1>Build history</h1><p>Check the status of your recent Android app builds.</p></div><button class="btn btn-primary" data-open-builder="quick">＋ New build</button></div><div class="panel history-panel"><div class="history-head"><div><h2>Recent builds</h2><p>Builds submitted to your connected server.</p></div><button class="btn btn-outline" id="refreshBuilds">↻ Refresh</button></div><div id="historyList" class="history-list"><div class="empty-state"><span>◷</span><b>No builds to show</b><p>Connect your backend and create your first app.</p></div></div></div></section>
+
+      <footer class="footer"><span>© 2026 APK KIE</span><span>Built for the web · Powered by your build server</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="apiModal" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="apiModalTitle"><button class="modal-close" id="closeApiSettings" aria-label="Close">×</button><div class="eyebrow">CONNECTION SETTINGS</div><h2 id="apiModalTitle">Connect your build server</h2><p>Enter the public HTTPS address of your deployed APK KIE FastAPI backend.</p><label class="field"><span>Backend API URL</span><input id="apiBaseInput" type="url" placeholder="https://api.yourdomain.com"></label><div class="modal-actions"><button class="btn btn-outline" id="testApi">Test connection</button><button class="btn btn-primary" id="saveApi">Save URL</button></div><div class="api-feedback" id="apiFeedback" aria-live="polite"></div><small class="modal-hint">Your API URL is stored in this browser only. Do not enter private keys or passwords here.</small></section></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./script.js" defer></script>
+</body>
+</html>
