@@ -3,3 +3,25 @@
 @media(max-width:1050px){.sidebar{width:215px}.main-area{margin-left:215px}.builder-layout{grid-template-columns:minmax(0,1fr) 270px}.view{padding-left:4%;padding-right:4%}.hero-art{margin-right:0}}
 @media(max-width:800px){.sidebar{transform:translateX(-100%);transition:.25s;width:250px;box-shadow:15px 0 35px #102a2422}.sidebar.open{transform:translateX(0)}.main-area{margin-left:0}.mobile-menu{display:block}.topbar{height:60px;padding:0 18px}.view{padding:27px 18px 24px}.welcome-row{min-height:205px}.hero-art{width:180px;height:170px;margin-right:0}.phone-frame{transform:scale(.82) rotate(8deg)}.stats-grid{gap:9px}.stat-card{padding:12px;gap:8px}.stat-icon{width:31px;height:31px}.stat-card strong{font-size:12px}.stat-card small,.stat-card em{font-size:9px}.builder-layout{grid-template-columns:1fr}.summary-column{position:static}.summary-card{max-width:none}.page-heading h1{font-size:27px}}
 @media(max-width:560px){.secure-label{display:none}.welcome-row{min-height:0;padding:10px 0 20px}.welcome-row h1{font-size:35px}.lead{font-size:12px;max-width:100%;margin-top:11px}.hero-art{display:none}.stats-grid{grid-template-columns:1fr;gap:8px;margin:8px 0 28px}.stat-card{padding:11px 13px}.stat-card em{display:none}.mode-grid{grid-template-columns:1fr}.mode-card{padding:18px}.mode-card p{min-height:0}.two-fields{grid-template-columns:1fr;gap:0}.color-grid{grid-template-columns:1fr}.toggle-grid{grid-template-columns:1fr}.page-heading{align-items:flex-start;gap:12px}.step-badge{font-size:8px;white-space:nowrap}.page-heading .btn{padding:10px;font-size:10px}.panel{padding:16px}.panel-heading{margin-bottom:17px}.build-row{grid-template-columns:1fr auto;gap:7px}.build-row>*:nth-child(2){grid-column:1}.build-row>*:nth-child(3){grid-column:2;grid-row:1}.build-row>*:nth-child(4){grid-column:2;grid-row:2}.footer{padding:15px 18px;gap:10px;flex-wrap:wrap}.history-head{align-items:flex-start}.history-head .btn{padding:9px;font-size:10px}.breadcrumb{font-size:11px}.view{padding-top:22px}}
+
+
+/* APK KIE DESKTOP VIEW MODE: keep the full desktop workspace on phones/tablets.
+   The page uses a 1200 CSS-pixel layout viewport; users can pinch-zoom on small screens. */
+@media (max-width: 1200px) {
+  .sidebar { transform: none !important; width: 248px !important; }
+  .main-area { margin-left: 248px !important; }
+  .mobile-menu { display: none !important; }
+  .topbar { height: 70px !important; padding: 0 5.2% !important; }
+  .view { padding: 34px 5.2% 28px !important; }
+  .welcome-row { min-height: 220px !important; padding: 0 !important; }
+  .hero-art { display: block !important; width: 240px !important; height: 210px !important; margin-right: 20px !important; }
+  .stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 14px !important; }
+  .stat-card { padding: 17px !important; }
+  .mode-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .builder-layout { grid-template-columns: minmax(0, 1fr) 300px !important; }
+  .summary-column { position: sticky !important; top: 90px !important; }
+  .two-fields { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 14px !important; }
+  .color-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  .toggle-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .secure-label { display: inline !important; }
+}
